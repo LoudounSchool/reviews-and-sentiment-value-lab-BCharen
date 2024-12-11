@@ -19,6 +19,6 @@ public class TestReview {
     
     //   System.out.println(Review.starRating("26WestReview.txt")); 
     // // //The above line prints 4
-    System.out.println(Review.fakeReview("SimpleReview.txt")); 
+    System.out.println(Review.fakeStrongPositiveReview("SimpleReview.txt")); 
   }
 }
