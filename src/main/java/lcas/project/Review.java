@@ -191,7 +191,7 @@ public class Review {
       sentiment += sentimentVal(removePunctuation(fileText.substring(startWord, index)));
 
     } catch (Exception e) {
-      System.err.println("Error in totalSentiment");
+      System.err.println("StarRatingError");
     }
     rating = (int) (sentiment / words * 40);
     if (rating <= 0) {
@@ -224,13 +224,15 @@ public class Review {
   public static String fakeStrongPositiveReview(String fileName) {
     String fileText = textToString(fileName);
     String adjective = "";
-    int startIndex = fileText.indexOf("\'") + 1;
-    int index = startIndex;
+    int startIndex = fileText.indexOf("\'");
+    int index = startIndex+1;
 
     while (index < fileText.length() && startIndex != -1) {
       if (!Character.isLetter(fileText.charAt(index))) {
         adjective = randomAdjective(0);
         adjective = "very " + adjective;
+        System.out.println(fileText);
+        System.out.println(fileText.substring(startIndex, index));
         fileText = fileText.replaceFirst(fileText.substring(startIndex, index), adjective);
         startIndex = fileText.indexOf("\'");
         index = startIndex;
